@@ -39,10 +39,20 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
             mb
           </div>
         </div>
-        <div className="grid place-items-center absolute h-full w-full back-face rounded-lg bg-green-500 rotate-y">
-          <div className="text-4xl text-amber-400">
-            <GoldIcon />
-          </div>
+        <div
+          className={`grid place-items-center absolute h-full w-full back-face rounded-lg rotate-y ${
+            isBomb ? "bg-red-600" : "bg-green-600"
+          }`}
+        >
+          {isBomb ? (
+            <div className="text-4xl text-white">
+              <BombIcon />
+            </div>
+          ) : (
+            <div className="text-4xl text-amber-400">
+              <GoldIcon />
+            </div>
+          )}
         </div>
       </div>
     </button>
