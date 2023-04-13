@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import {
   GiRollingBomb as BombLogoIcon,
   GiGoldBar as GoldIcon,
+  GiFireBomb as BombIcon,
 } from "react-icons/gi";
 import { Deck } from "../pages/Bomb";
 import { useBombStore } from "../store/store";
 
 const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const deck = useBombStore((state) => state.deck);
+  const playerMoves = useBombStore((state) => state.playerMoves);
+  const incrementPlayerMoves = useBombStore(
+    (state) => state.incrementPlayerMoves
+  );
   const setDeck = useBombStore((state) => state.setDeck);
 
   const rotateCard = () => {
+    if (playerMoves >= 3) return;
     const updatedDeck = [...deck];
     updatedDeck[cardIndex] = { ...updatedDeck[cardIndex], isCardRotated: true };
     setDeck(updatedDeck);
+    incrementPlayerMoves();
   };
 
   return (
