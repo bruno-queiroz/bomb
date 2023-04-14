@@ -14,6 +14,9 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     (state) => state.incrementPlayerMoves
   );
   const setDeck = useBombStore((state) => state.setDeck);
+  const setIsEndMatchModalOpen = useBombStore(
+    (state) => state.setIsEndMatchModalOpen
+  );
 
   const flipAllCards = () => {
     deck.forEach((card, index) => {
@@ -30,11 +33,14 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const rotateCard = () => {
     if (deck[cardIndex].isBomb) {
       flipAllCards();
+      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 150);
       return;
     }
 
     if (playerMoves >= 3 - 1) {
       flipAllCards();
+      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 150);
+
       return;
     }
     const updatedDeck = [...deck];
