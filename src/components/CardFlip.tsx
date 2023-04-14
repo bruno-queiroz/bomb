@@ -15,6 +15,18 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   );
   const setDeck = useBombStore((state) => state.setDeck);
 
+  const flipAllCards = () => {
+    deck.forEach((card, index) => {
+      if (!card.isCardRotated) {
+        setTimeout(() => {
+          const updatedDeck = [...deck];
+          updatedDeck[index].isCardRotated = true;
+          setDeck(updatedDeck);
+        }, index * 80);
+      }
+    });
+  };
+
   const rotateCard = () => {
     if (playerMoves >= 3) return;
     const updatedDeck = [...deck];
