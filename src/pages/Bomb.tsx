@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardFlip from "../components/CardFlip";
 import { createDeck } from "../utils/createDeck";
 import { useBombStore } from "../store/store";
+import EndMatchModal from "../components/EndMatchModal";
 
 export interface Deck {
   isBomb: boolean;
@@ -12,13 +13,13 @@ export interface Deck {
 const Bomb = () => {
   const deck = useBombStore((state) => state.deck);
   const setDeck = useBombStore((state) => state.setDeck);
-
   useEffect(() => {
     setDeck(createDeck(12));
   }, []);
 
   return (
     <section className="flex justify-center items-center pt-12">
+      <EndMatchModal />
       <div className="flex gap-4 flex-wrap justify-center max-w-[500px]">
         {deck?.map((card, index) => (
           <CardFlip {...card} key={index} />
