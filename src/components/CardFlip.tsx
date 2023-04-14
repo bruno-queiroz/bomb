@@ -32,6 +32,11 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
       flipAllCards();
       return;
     }
+
+    if (playerMoves >= 3 - 1) {
+      flipAllCards();
+      return;
+    }
     const updatedDeck = [...deck];
     updatedDeck[cardIndex] = { ...updatedDeck[cardIndex], isCardRotated: true };
     setDeck(updatedDeck);
