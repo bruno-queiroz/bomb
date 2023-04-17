@@ -32,6 +32,12 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     });
   };
 
+  const flipOneCard = () => {
+    const updatedDeck = [...deck];
+    updatedDeck[cardIndex] = { ...updatedDeck[cardIndex], isCardRotated: true };
+    setDeck(updatedDeck);
+  };
+
   const rotateCard = () => {
     if (deck[cardIndex].isBomb) {
       flipAllCards();
