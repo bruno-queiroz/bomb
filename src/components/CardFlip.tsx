@@ -18,12 +18,14 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     (state) => state.setIsEndMatchModalOpen
   );
 
-  const flipAllCards = () => {
+  const flipAllCards = (lastCardFlippedIndex: number) => {
     deck.forEach((card, index) => {
       if (!card.isCardRotated) {
+        if (lastCardFlippedIndex === index) return;
         setTimeout(() => {
           const updatedDeck = [...deck];
           updatedDeck[index].isCardRotated = true;
+          updatedDeck[lastCardFlippedIndex].isCardRotated = true;
           setDeck(updatedDeck);
         }, index * 80);
       }
