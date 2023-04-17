@@ -44,6 +44,8 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
       setTimeout(() => {
         flipAllCards(cardIndex);
       }, 400);
+
+      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 200);
       return;
     }
 
@@ -51,6 +53,8 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
       setTimeout(() => {
         flipAllCards(cardIndex);
       }, 400);
+
+      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 200);
       return;
     }
     incrementPlayerMoves();
