@@ -17,6 +17,8 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const setIsEndMatchModalOpen = useBombStore(
     (state) => state.setIsEndMatchModalOpen
   );
+  const didPlayerWin = useBombStore((state) => state.didPlayerWin);
+  const setDidPlayerWin = useBombStore((state) => state.setDidPlayerWin);
 
   const INTERVAL_BETWEEN_FLIP_A_CARD = 80;
   const INTERVAL_TO_START_FLIPPING_ALL_CARDS = 400;
@@ -45,6 +47,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const rotateCard = () => {
     flipOneCard();
     if (deck[cardIndex].isBomb) {
+      setDidPlayerWin(false);
       setTimeout(() => {
         flipAllCards(cardIndex);
       }, INTERVAL_TO_START_FLIPPING_ALL_CARDS);
@@ -57,6 +60,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     }
 
     if (playerMoves >= 3 - 1) {
+      setDidPlayerWin(true);
       setTimeout(() => {
         flipAllCards(cardIndex);
       }, INTERVAL_TO_START_FLIPPING_ALL_CARDS);
@@ -67,6 +71,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
       );
       return;
     }
+
     incrementPlayerMoves();
   };
 
