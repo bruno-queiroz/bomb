@@ -18,6 +18,10 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     (state) => state.setIsEndMatchModalOpen
   );
 
+  const INTERVAL_BETWEEN_FLIP_A_CARD = 80;
+  const INTERVAL_TO_START_FLIPPING_ALL_CARDS = 400;
+  const INTERVAL_TO_SHOW_MODAL = 1000;
+
   const flipAllCards = (lastCardFlippedIndex: number) => {
     deck.forEach((card, index) => {
       if (!card.isCardRotated) {
@@ -27,7 +31,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
           updatedDeck[index].isCardRotated = true;
           updatedDeck[lastCardFlippedIndex].isCardRotated = true;
           setDeck(updatedDeck);
-        }, index * 80);
+        }, index * INTERVAL_BETWEEN_FLIP_A_CARD);
       }
     });
   };
@@ -43,18 +47,24 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     if (deck[cardIndex].isBomb) {
       setTimeout(() => {
         flipAllCards(cardIndex);
-      }, 400);
+      }, INTERVAL_TO_START_FLIPPING_ALL_CARDS);
 
-      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 200);
+      setTimeout(
+        () => setIsEndMatchModalOpen(true),
+        deck.length * INTERVAL_BETWEEN_FLIP_A_CARD + INTERVAL_TO_SHOW_MODAL
+      );
       return;
     }
 
     if (playerMoves >= 3 - 1) {
       setTimeout(() => {
         flipAllCards(cardIndex);
-      }, 400);
+      }, INTERVAL_TO_START_FLIPPING_ALL_CARDS);
 
-      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 200);
+      setTimeout(
+        () => setIsEndMatchModalOpen(true),
+        deck.length * INTERVAL_BETWEEN_FLIP_A_CARD + INTERVAL_TO_SHOW_MODAL
+      );
       return;
     }
     incrementPlayerMoves();
