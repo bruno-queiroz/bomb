@@ -9,6 +9,7 @@ const EndMatchModal = () => {
     (state) => state.isEndMatchModalOpen
   );
   const didPlayerWin = useBombStore((state) => state.didPlayerWin);
+  const resetMatch = useBombStore((state) => state.resetMatch);
 
   return (
     <div
@@ -23,7 +24,10 @@ const EndMatchModal = () => {
             : "You caught the bomb this time"}
         </h2>
 
-        <button className="bg-green-600 py-3 rounded font-semibold text-lg">
+        <button
+          className="bg-green-600 py-3 rounded font-semibold text-lg"
+          onClick={resetMatch}
+        >
           Play again
         </button>
         <Link
