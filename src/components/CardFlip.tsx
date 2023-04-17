@@ -39,21 +39,20 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   };
 
   const rotateCard = () => {
+    flipOneCard();
     if (deck[cardIndex].isBomb) {
-      flipAllCards();
-      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 150);
+      setTimeout(() => {
+        flipAllCards(cardIndex);
+      }, 400);
       return;
     }
 
     if (playerMoves >= 3 - 1) {
-      flipAllCards();
-      setTimeout(() => setIsEndMatchModalOpen(true), deck.length * 80 + 150);
-
+      setTimeout(() => {
+        flipAllCards(cardIndex);
+      }, 400);
       return;
     }
-    const updatedDeck = [...deck];
-    updatedDeck[cardIndex] = { ...updatedDeck[cardIndex], isCardRotated: true };
-    setDeck(updatedDeck);
     incrementPlayerMoves();
   };
 
