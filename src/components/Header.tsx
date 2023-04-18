@@ -5,7 +5,10 @@ import { GiRollingBomb as BombLogoIcon } from "react-icons/gi";
 const Header = () => {
   return (
     <header className="p-4">
-      <Link to="/" className="flex text-4xl font-bold text-red-600">
+      <Link
+        to="/"
+        className="flex text-4xl font-bold text-red-600 w-[max-content]"
+      >
         B<BombLogoIcon className="text-white" />
         mb
       </Link>
