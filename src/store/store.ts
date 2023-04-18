@@ -26,7 +26,7 @@ export const useBombStore = create<BombState>()((set) => ({
     set((state) => ({
       playerMoves: 0,
       isEndMatchModalOpen: false,
-      deck: createDeck(12),
+      deck: createDeck(20, 5),
       didPlayerWin: null,
     }));
   },

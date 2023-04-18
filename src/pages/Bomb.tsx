@@ -14,7 +14,7 @@ const Bomb = () => {
   const deck = useBombStore((state) => state.deck);
   const setDeck = useBombStore((state) => state.setDeck);
   useEffect(() => {
-    setDeck(createDeck(12));
+    setDeck(createDeck(20, 5));
   }, []);
 
   return (
