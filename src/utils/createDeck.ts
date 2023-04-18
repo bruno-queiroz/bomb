@@ -1,7 +1,7 @@
 import { generateRandomNumbers } from "./generateRandomNumbers";
 
-export const createDeck = (cardsAmount: number) => {
-  const randomNumbers = generateRandomNumbers(3);
+export const createDeck = (cardsAmount: number, numberOfBombs: number) => {
+  const randomNumbers = generateRandomNumbers(numberOfBombs);
   const deck = Array.from({ length: cardsAmount }, (_, index) => ({
     isBomb: false,
     cardIndex: index,
