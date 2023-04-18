@@ -15,7 +15,7 @@ const Home = () => {
       </div>
 
       <Link
-        to="#"
+        to="/game-mode"
         className="py-2 px-6 bg-green-500 w-[max-content] mx-auto rounded"
       >
         Play
