@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CardFlip from "../components/CardFlip";
-import { createDeck } from "../utils/createDeck";
 import { useBombStore } from "../store/store";
 import EndMatchModal from "../components/EndMatchModal";
 
@@ -12,9 +11,10 @@ export interface Deck {
 
 const Bomb = () => {
   const deck = useBombStore((state) => state.deck);
-  const setDeck = useBombStore((state) => state.setDeck);
+  const resetMatch = useBombStore((state) => state.resetMatch);
+
   useEffect(() => {
-    setDeck(createDeck(20, 5));
+    resetMatch();
   }, []);
 
   return (
