@@ -3,6 +3,7 @@ import React from "react";
 import { IoClose as CloseIcon } from "react-icons/io5";
 import { useBombStore } from "../store/store";
 import { Link } from "react-router-dom";
+import { flipAllCardsDown } from "../utils/flipAllCardsDown";
 
 const EndMatchModal = () => {
   const isEndMatchModalOpen = useBombStore(
@@ -10,6 +11,16 @@ const EndMatchModal = () => {
   );
   const didPlayerWin = useBombStore((state) => state.didPlayerWin);
   const resetMatch = useBombStore((state) => state.resetMatch);
+  const setDeck = useBombStore((state) => state.setDeck);
+
+  const CARD_FLIP_ANIMATION_TIME = 300;
+
+  const playAgain = () => {
+    setDeck(flipAllCardsDown());
+    setTimeout(() => {
+      resetMatch();
+    }, CARD_FLIP_ANIMATION_TIME);
+  };
 
   return (
     <div
@@ -26,7 +37,7 @@ const EndMatchModal = () => {
 
         <button
           className="bg-green-600 py-3 rounded font-semibold text-lg"
-          onClick={resetMatch}
+          onClick={playAgain}
         >
           Play again
         </button>
