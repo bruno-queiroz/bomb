@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { Deck } from "../pages/Bomb";
 import { createDeck } from "../utils/createDeck";
+import { getGameModeValues } from "../utils/getGameModeValues";
 
 interface BombState {
   deck: Deck[];
@@ -26,7 +27,10 @@ export const useBombStore = create<BombState>()((set) => ({
     set((state) => ({
       playerMoves: 0,
       isEndMatchModalOpen: false,
-      deck: createDeck(20, 5),
+      deck: createDeck(
+        getGameModeValues()?.mode || 12,
+        getGameModeValues()?.bombs || 3
+      ),
       didPlayerWin: null,
     }));
   },
