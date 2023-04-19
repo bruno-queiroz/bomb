@@ -18,9 +18,13 @@ const Bomb = () => {
   }, []);
 
   return (
-    <section className="flex justify-center items-center pt-12">
+    <section className="flex justify-center items-center pt-12 p-4 pb-8">
       <EndMatchModal />
-      <div className="flex gap-4 flex-wrap justify-center max-w-[500px]">
+      <div
+        className={`flex gap-4 flex-wrap justify-center ${
+          deck.length > 12 ? "max-w-[600px]" : "max-w-[500px]"
+        }`}
+      >
         {deck?.map((card, index) => (
           <CardFlip {...card} key={index} />
         ))}
