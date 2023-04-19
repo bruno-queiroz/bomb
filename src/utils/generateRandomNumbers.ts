@@ -1,8 +1,11 @@
-export const generateRandomNumbers = (amount: number) => {
+export const generateRandomNumbers = (
+  bombAmount: number,
+  cardAmount: number
+) => {
   const randomNumbersArray: number[] = [];
 
-  for (let index = 0; index < amount; index++) {
-    const randomNumber = generateRandomNumber(12);
+  for (let index = 0; index < bombAmount; index++) {
+    const randomNumber = generateRandomNumber(cardAmount);
     if (randomNumbersArray.length === 0) {
       randomNumbersArray.push(randomNumber);
       continue;
@@ -16,7 +19,7 @@ export const generateRandomNumbers = (amount: number) => {
       randomNumbersArray.push(randomNumber);
     } else {
       while (true) {
-        const newRandomNumber = generateRandomNumber(12);
+        const newRandomNumber = generateRandomNumber(cardAmount);
         const isNewRandomNumberUnique = randomNumbersArray.every(
           (randomNumberAlreadySelected) =>
             randomNumberAlreadySelected !== newRandomNumber
