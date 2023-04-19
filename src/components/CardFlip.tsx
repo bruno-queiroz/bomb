@@ -6,6 +6,7 @@ import {
 } from "react-icons/gi";
 import { Deck } from "../pages/Bomb";
 import { useBombStore } from "../store/store";
+import { getGameModeValues } from "../utils/getGameModeValues";
 
 const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const deck = useBombStore((state) => state.deck);
@@ -46,6 +47,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
 
   const rotateCard = () => {
     if (didPlayerWin !== null) return;
+    const numberOfMoves = getGameModeValues()?.moves || 3;
     flipOneCard();
     if (deck[cardIndex].isBomb) {
       setDidPlayerWin(false);
@@ -60,7 +62,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
       return;
     }
 
-    if (playerMoves >= 3 - 1) {
+    if (playerMoves >= numberOfMoves - 1) {
       setDidPlayerWin(true);
       setTimeout(() => {
         flipAllCards(cardIndex);
