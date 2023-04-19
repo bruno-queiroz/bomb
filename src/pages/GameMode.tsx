@@ -1,6 +1,6 @@
 import React from "react";
 import GameModeCard from "../components/GameModeCard";
-const gameModes = [
+export const gameModes = [
   {
     mode: 12,
     bombs: 3,
