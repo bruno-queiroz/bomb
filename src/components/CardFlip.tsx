@@ -46,9 +46,12 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   };
 
   const rotateCard = () => {
+    if (isCardRotated) return;
     if (didPlayerWin !== null) return;
+
     const numberOfMoves = getGameModeValues()?.moves || 3;
     flipOneCard();
+
     if (deck[cardIndex].isBomb) {
       setDidPlayerWin(false);
       setTimeout(() => {
