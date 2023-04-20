@@ -4,6 +4,7 @@ import { IoClose as CloseIcon } from "react-icons/io5";
 import { useBombStore } from "../store/store";
 import { Link } from "react-router-dom";
 import { flipAllCardsDown } from "../utils/flipAllCardsDown";
+import { getGameModeValues } from "../utils/getGameModeValues";
 
 const EndMatchModal = () => {
   const isEndMatchModalOpen = useBombStore(
@@ -34,6 +35,24 @@ const EndMatchModal = () => {
             ? "Congrats you were a lucky guy this time"
             : "You caught the bomb this time"}
         </h2>
+
+        <div className="flex justify-center mb-4 text-lg">
+          {didPlayerWin ? (
+            <div>
+              You Earned:{" "}
+              <span className="text-amber-500 font-semibold">
+                {getGameModeValues()?.win} golds
+              </span>
+            </div>
+          ) : (
+            <div>
+              You Lost:{" "}
+              <span className="text-red-500 font-semibold">
+                {getGameModeValues()?.loss} golds
+              </span>
+            </div>
+          )}
+        </div>
 
         <button
           className="bg-green-600 py-3 rounded font-semibold text-lg"
