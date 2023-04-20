@@ -20,6 +20,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const didPlayerWin = useBombStore((state) => state.didPlayerWin);
   const setDidPlayerWin = useBombStore((state) => state.setDidPlayerWin);
   const loseGolds = useBombStore((state) => state.loseGolds);
+  const winGolds = useBombStore((state) => state.winGolds);
 
   const INTERVAL_BETWEEN_FLIP_A_CARD = 80;
   const INTERVAL_TO_START_FLIPPING_ALL_CARDS = 400;
@@ -76,6 +77,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
         () => setIsEndMatchModalOpen(true),
         deck.length * INTERVAL_BETWEEN_FLIP_A_CARD + INTERVAL_TO_SHOW_MODAL
       );
+      winGolds(getGameModeValues()?.win || 25);
       return;
     }
 
