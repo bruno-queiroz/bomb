@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   GiRollingBomb as BombLogoIcon,
   GiGoldBar as GoldIcon,
@@ -20,6 +19,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   );
   const didPlayerWin = useBombStore((state) => state.didPlayerWin);
   const setDidPlayerWin = useBombStore((state) => state.setDidPlayerWin);
+  const loseGolds = useBombStore((state) => state.loseGolds);
 
   const INTERVAL_BETWEEN_FLIP_A_CARD = 80;
   const INTERVAL_TO_START_FLIPPING_ALL_CARDS = 400;
@@ -62,6 +62,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
         () => setIsEndMatchModalOpen(true),
         deck.length * INTERVAL_BETWEEN_FLIP_A_CARD + INTERVAL_TO_SHOW_MODAL
       );
+      loseGolds(getGameModeValues()?.loss || 35);
       return;
     }
 
