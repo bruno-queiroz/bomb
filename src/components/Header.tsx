@@ -20,7 +20,10 @@ const Header = () => {
 
         <div className="flex gap-1">
           <GoldIcon className="text-3xl text-amber-500" />
-          <div className="grid place-items-center text-white rounded bg-gray-800 min-w-[50px]">
+          <div
+            className="grid place-items-center text-white rounded bg-gray-800 min-w-[50px]"
+            id="gold-item"
+          >
             {golds}
           </div>
         </div>
