@@ -22,3 +22,18 @@
 .rotate-y {
   transform: rotateY(180deg);
 }
+
+.carry-gold-up {
+  animation-name: carry-gold-up;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes carry-gold-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--y-location));
+  }
+}
