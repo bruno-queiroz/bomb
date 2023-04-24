@@ -9,6 +9,7 @@ interface BombState {
   isEndMatchModalOpen: boolean;
   didPlayerWin: boolean | null;
   golds: number;
+  isFloatGoldIconOnScreen: boolean;
   setDeck: (newDeck: Deck[]) => void;
   incrementPlayerMoves: () => void;
   resetMatch: () => void;
@@ -16,6 +17,7 @@ interface BombState {
   setDidPlayerWin: (boolean: boolean) => void;
   winGolds: (amount: number) => void;
   loseGolds: (amount: number) => void;
+  setIsFloatGoldIconOnScreen: (boolean: boolean) => void;
 }
 
 export const useBombStore = create<BombState>()((set) => ({
@@ -24,6 +26,7 @@ export const useBombStore = create<BombState>()((set) => ({
   isEndMatchModalOpen: false,
   didPlayerWin: null,
   golds: Number(localStorage.getItem("golds")) || 100,
+  isFloatGoldIconOnScreen: true,
   setDeck: (newDeck) => set((state) => ({ deck: newDeck })),
   incrementPlayerMoves: () =>
     set((state) => ({ playerMoves: state.playerMoves + 1 })),
@@ -53,4 +56,6 @@ export const useBombStore = create<BombState>()((set) => ({
       localStorage.setItem("golds", currentGolds.toString());
       return { golds: currentGolds };
     }),
+  setIsFloatGoldIconOnScreen: (boolean) =>
+    set((state) => ({ isFloatGoldIconOnScreen: boolean })),
 }));
