@@ -20,7 +20,7 @@ const Header = () => {
           </Link>
         </div>
       </header>
-      <div className="flex gap-1 fixed right-4 top-5 z-10">
+      <div className="flex gap-1 fixed right-4 top-5 z-30">
         <GoldIcon className="text-3xl text-amber-500" />
         <div
           className="grid place-items-center text-white rounded bg-gray-800 min-w-[50px]"
