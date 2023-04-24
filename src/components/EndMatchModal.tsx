@@ -11,6 +11,12 @@ const EndMatchModal = () => {
     (state) => state.isEndMatchModalOpen
   );
   const didPlayerWin = useBombStore((state) => state.didPlayerWin);
+  const isFloatGoldIconOnScreen = useBombStore(
+    (state) => state.isFloatGoldIconOnScreen
+  );
+  const setIsFloatGoldIconOnScreen = useBombStore(
+    (state) => state.setIsFloatGoldIconOnScreen
+  );
   const resetMatch = useBombStore((state) => state.resetMatch);
   const setDeck = useBombStore((state) => state.setDeck);
   const earnedGoldRef = useRef<HTMLDivElement>(null);
@@ -54,14 +60,22 @@ const EndMatchModal = () => {
     );
   }, [isEndMatchModalOpen]);
 
+  const carryGoldAnimationEnd = (
+    event: React.AnimationEvent<HTMLDivElement>
+  ) => {
+    setIsFloatGoldIconOnScreen(false);
+  };
+
   return (
     <>
       <div
         style={{
           top: `${floatGoldIconTopPosition}px`,
-          display: isEndMatchModalOpen ? "flex" : "none",
+          display:
+            isEndMatchModalOpen && isFloatGoldIconOnScreen ? "flex" : "none",
         }}
         className="flex justify-center fixed z-40 w-[100%] carry-gold-up"
+        onAnimationEnd={carryGoldAnimationEnd}
       >
         <GoldIcon className="text-amber-500 text-4xl carry-gold-right" />
       </div>
