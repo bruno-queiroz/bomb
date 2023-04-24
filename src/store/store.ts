@@ -39,6 +39,7 @@ export const useBombStore = create<BombState>()((set) => ({
         getGameModeValues()?.bombs || 3
       ),
       didPlayerWin: null,
+      isFloatGoldIconOnScreen: true,
     }));
   },
   setIsEndMatchModalOpen: (boolean) =>
