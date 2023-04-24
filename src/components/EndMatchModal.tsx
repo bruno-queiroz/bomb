@@ -11,6 +11,8 @@ const EndMatchModal = () => {
     (state) => state.isEndMatchModalOpen
   );
   const didPlayerWin = useBombStore((state) => state.didPlayerWin);
+  const winGolds = useBombStore((state) => state.winGolds);
+
   const isFloatGoldIconOnScreen = useBombStore(
     (state) => state.isFloatGoldIconOnScreen
   );
@@ -32,38 +34,39 @@ const EndMatchModal = () => {
   };
 
   useEffect(() => {
-    const root: HTMLDivElement | null = document.querySelector(":root");
-    const goldCounter = document.querySelector("#gold-counter");
-    const goldCounterLocation = goldCounter?.getBoundingClientRect();
-    const earnedGoldLocation = earnedGoldRef.current?.getBoundingClientRect();
+    if (didPlayerWin) {
+      const root: HTMLDivElement | null = document.querySelector(":root");
+      const goldCounter = document.querySelector("#gold-counter");
+      const goldCounterLocation = goldCounter?.getBoundingClientRect();
+      const earnedGoldLocation = earnedGoldRef.current?.getBoundingClientRect();
 
-    const earnedGoldTopLocation = earnedGoldLocation!.top;
-    const goldCounterLeftLocation = goldCounterLocation?.left;
-    const goldCounterTopLocation = goldCounterLocation?.top;
-    const middleOfTheBody = root?.getBoundingClientRect().width! / 2;
+      const earnedGoldTopLocation = earnedGoldLocation!.top;
+      const goldCounterLeftLocation = goldCounterLocation?.left;
+      const goldCounterTopLocation = goldCounterLocation?.top;
+      const middleOfTheBody = root?.getBoundingClientRect().width! / 2;
 
-    const middleOfGoldCounterHorizontally = goldCounterLocation?.width! / 2;
+      const middleOfGoldCounterHorizontally = goldCounterLocation?.width! / 2;
 
-    setFloatGoldIconTopPosition(earnedGoldTopLocation);
+      setFloatGoldIconTopPosition(earnedGoldTopLocation);
 
-    root!.style.setProperty(
-      "--y-location",
-      `-${earnedGoldTopLocation! - goldCounterTopLocation!}px`
-    );
-    root!.style.setProperty(
-      "--x-location",
-      `${
-        goldCounterLeftLocation! -
-        middleOfTheBody +
-        middleOfGoldCounterHorizontally
-      }px`
-    );
+      root!.style.setProperty(
+        "--y-location",
+        `-${earnedGoldTopLocation! - goldCounterTopLocation!}px`
+      );
+      root!.style.setProperty(
+        "--x-location",
+        `${
+          goldCounterLeftLocation! -
+          middleOfTheBody +
+          middleOfGoldCounterHorizontally
+        }px`
+      );
+    }
   }, [isEndMatchModalOpen]);
 
-  const carryGoldAnimationEnd = (
-    event: React.AnimationEvent<HTMLDivElement>
-  ) => {
+  const carryGoldAnimationEnd = () => {
     setIsFloatGoldIconOnScreen(false);
+    winGolds(getGameModeValues()?.win || 25);
   };
 
   return (
@@ -72,7 +75,9 @@ const EndMatchModal = () => {
         style={{
           top: `${floatGoldIconTopPosition}px`,
           display:
-            isEndMatchModalOpen && isFloatGoldIconOnScreen ? "flex" : "none",
+            isEndMatchModalOpen && isFloatGoldIconOnScreen && didPlayerWin
+              ? "flex"
+              : "none",
         }}
         className="flex justify-center fixed z-40 w-[100%] carry-gold-up"
         onAnimationEnd={carryGoldAnimationEnd}
