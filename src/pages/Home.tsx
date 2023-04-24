@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <section className="flex justify-center flex-col gap-12 items-center pt-20">
+    <section className="flex justify-center flex-col gap-12 items-center pt-32">
       <div>
         <h1 className="text-5xl text-white font-bold text-center">
           Watch out for the <span className="text-red-600">Bombs</span>

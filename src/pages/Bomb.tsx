@@ -18,7 +18,7 @@ const Bomb = () => {
   }, []);
 
   return (
-    <section className="flex justify-center items-center pt-12 p-4 pb-8">
+    <section className="flex justify-center items-center pt-24 p-4 pb-8">
       <EndMatchModal />
       <div
         className={`flex gap-4 flex-wrap justify-center ${
