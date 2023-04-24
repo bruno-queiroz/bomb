@@ -24,7 +24,7 @@ const Header = () => {
         <GoldIcon className="text-3xl text-amber-500" />
         <div
           className="grid place-items-center text-white rounded bg-gray-800 min-w-[50px]"
-          id="gold-item"
+          id="gold-counter"
         >
           {golds}
         </div>
