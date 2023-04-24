@@ -29,11 +29,26 @@
   animation-fill-mode: forwards;
 }
 
+.carry-gold-right {
+  animation-name: carry-gold-right;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
 @keyframes carry-gold-up {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(var(--y-location));
+  }
+}
+
+@keyframes carry-gold-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--x-location));
   }
 }
