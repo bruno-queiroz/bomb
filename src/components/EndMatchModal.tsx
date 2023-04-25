@@ -23,6 +23,7 @@ const EndMatchModal = () => {
   const setDeck = useBombStore((state) => state.setDeck);
   const earnedGoldRef = useRef<HTMLDivElement>(null);
   const [floatGoldIconTopPosition, setFloatGoldIconTopPosition] = useState(0);
+  const playAgainButtonRef = useRef<HTMLButtonElement>(null);
 
   const CARD_FLIP_ANIMATION_TIME = 300;
 
@@ -61,6 +62,9 @@ const EndMatchModal = () => {
           middleOfGoldCounterHorizontally
         }px`
       );
+    }
+    if (isEndMatchModalOpen) {
+      playAgainButtonRef.current?.focus();
     }
   }, [isEndMatchModalOpen]);
 
@@ -117,6 +121,7 @@ const EndMatchModal = () => {
           <button
             className="bg-green-600 py-3 rounded font-semibold text-lg"
             onClick={playAgain}
+            ref={playAgainButtonRef}
           >
             Play again
           </button>
