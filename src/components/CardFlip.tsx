@@ -39,6 +39,14 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     });
   };
 
+  const decrementGoldOneByOne = (loopAmount: number) => {
+    for (let index = 0; index < loopAmount; index++) {
+      setTimeout(() => {
+        loseGolds(1);
+      }, index * 100);
+    }
+  };
+
   const flipOneCard = () => {
     const updatedDeck = [...deck];
     updatedDeck[cardIndex] = { ...updatedDeck[cardIndex], isCardRotated: true };
@@ -62,7 +70,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
         () => setIsEndMatchModalOpen(true),
         deck.length * INTERVAL_BETWEEN_FLIP_A_CARD + INTERVAL_TO_SHOW_MODAL
       );
-      loseGolds(getGameModeValues()?.loss || 35);
+      decrementGoldOneByOne(getGameModeValues()?.loss || 35);
       return;
     }
 
