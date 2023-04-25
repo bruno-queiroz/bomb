@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CardFlip from "../components/CardFlip";
 import { useBombStore } from "../store/store";
 import EndMatchModal from "../components/EndMatchModal";
+import { flipAllCardsDown } from "../utils/flipAllCardsDown";
 
 export interface Deck {
   isBomb: boolean;
@@ -11,10 +12,19 @@ export interface Deck {
 
 const Bomb = () => {
   const deck = useBombStore((state) => state.deck);
+  const setDeck = useBombStore((state) => state.setDeck);
+  const setIsEndMatchModalOpen = useBombStore(
+    (state) => state.setIsEndMatchModalOpen
+  );
   const resetMatch = useBombStore((state) => state.resetMatch);
+  const CARD_FLIP_ANIMATION_TIME = 300;
 
   useEffect(() => {
-    resetMatch();
+    setIsEndMatchModalOpen(false);
+    setDeck(flipAllCardsDown());
+    setTimeout(() => {
+      resetMatch();
+    }, CARD_FLIP_ANIMATION_TIME);
   }, []);
 
   return (
