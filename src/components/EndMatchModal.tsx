@@ -68,9 +68,17 @@ const EndMatchModal = () => {
     }
   }, [isEndMatchModalOpen]);
 
+  const incrementGoldOneByOne = (loopAmount: number) => {
+    for (let index = 0; index < loopAmount; index++) {
+      setTimeout(() => {
+        winGolds(1);
+      }, index * 100);
+    }
+  };
+
   const carryGoldAnimationEnd = () => {
     setIsFloatGoldIconOnScreen(false);
-    winGolds(getGameModeValues()?.win || 25);
+    incrementGoldOneByOne(getGameModeValues()?.win || 25);
   };
 
   return (
