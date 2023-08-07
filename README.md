@@ -1,8 +1,22 @@
-# Bomb
+# Bomb - A simple game designed to test your luck!
 
 This project was originally thought of by me. I only had a basic idea of how it should be, so I decided to start building it and add new features as I came up with new ideas. It's a simple game designed to test your luck!
 
----
+
+## How to start the project
+
+1. Fork the project
+2. Clone the project using `git clone`
+3. Install dependencies
+```
+npm install
+```
+4. Run the project
+```
+npm run dev
+```
+
+## Screenshots
 
 This is the `Home Page`
 
@@ -11,10 +25,6 @@ This is the `Home Page`
 This is the `Game Mode Page`
 
 ![bomb-game-mode-page](https://user-images.githubusercontent.com/122624016/234380370-31fe3c31-78e6-41e8-afb1-e6459f15482e.png)
-
-Here is the page where you can play the game
-
-![bomb-play-page](https://user-images.githubusercontent.com/122624016/234381269-1f6934ee-718e-431c-ae73-1bcf437985bc.png)
 
 This is how the game basically works
 
