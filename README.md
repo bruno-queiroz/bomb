@@ -5,13 +5,15 @@ This project was originally thought of by me. I only had a basic idea of how it 
 
 ## How to start the project
 
-1. Fork the project
-2. Clone the project using `git clone`
-3. Install dependencies
+1. Clone the project
+```
+git clone https://github.com/bruno-queiroz/bomb.git
+```
+2. Install dependencies
 ```
 npm install
 ```
-4. Run the project
+3. Run the project
 ```
 npm run dev
 ```
