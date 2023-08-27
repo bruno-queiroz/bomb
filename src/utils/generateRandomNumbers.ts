@@ -1,3 +1,5 @@
+import { generateRandomNumber } from "./generateRandomNumber";
+
 export const generateRandomNumbers = (
   bombAmount: number,
   cardAmount: number
@@ -32,9 +34,4 @@ export const generateRandomNumbers = (
     }
   }
   return randomNumbersArray;
-};
-
-const generateRandomNumber = (limit: number) => {
-  const generateRandomNumber = Math.ceil(Math.random() * limit);
-  return generateRandomNumber;
 };
