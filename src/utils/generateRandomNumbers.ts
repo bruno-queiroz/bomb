@@ -1,3 +1,4 @@
+import { checkIfRandomNumberIsUnique } from "./checkIfRandomNumberIsUnique";
 import { generateRandomNumber } from "./generateRandomNumber";
 
 export const generateRandomNumbers = (
@@ -8,13 +9,15 @@ export const generateRandomNumbers = (
 
   for (let index = 0; index < bombAmount; index++) {
     const randomNumber = generateRandomNumber(cardAmount);
+
     if (randomNumbersArray.length === 0) {
       randomNumbersArray.push(randomNumber);
       continue;
     }
-    const isRandomNumberUnique = randomNumbersArray.every(
-      (randomNumberAlreadySelected) =>
-        randomNumberAlreadySelected !== randomNumber
+
+    const isRandomNumberUnique = checkIfRandomNumberIsUnique(
+      randomNumbersArray,
+      randomNumber
     );
 
     if (isRandomNumberUnique) {
@@ -22,10 +25,12 @@ export const generateRandomNumbers = (
     } else {
       while (true) {
         const newRandomNumber = generateRandomNumber(cardAmount);
-        const isNewRandomNumberUnique = randomNumbersArray.every(
-          (randomNumberAlreadySelected) =>
-            randomNumberAlreadySelected !== newRandomNumber
+
+        const isNewRandomNumberUnique = checkIfRandomNumberIsUnique(
+          randomNumbersArray,
+          newRandomNumber
         );
+
         if (isNewRandomNumberUnique) {
           randomNumbersArray.push(newRandomNumber);
           break;
