@@ -1,4 +1,3 @@
-import React from "react";
 import GameModeCard from "../components/GameModeCard";
 export const gameModes = [
   {

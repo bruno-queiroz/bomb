@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CardFlip from "../components/CardFlip";
 import { useBombStore } from "../store/store";
 import EndMatchModal from "../components/EndMatchModal";
