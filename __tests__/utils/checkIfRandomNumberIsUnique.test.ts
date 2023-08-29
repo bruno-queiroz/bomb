@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { checkIfRandomNumberIsUnique } from "../../src/utils/checkIfRandomNumberIsUnique";
 
 describe("Testing checkIfRandomNumberIsUnique utility function", () => {

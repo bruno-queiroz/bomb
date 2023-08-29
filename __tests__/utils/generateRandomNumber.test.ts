@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 import { generateRandomNumber } from "../../src/utils/generateRandomNumber";
 
 describe("Testing generateRandomNumber utility function", () => {
