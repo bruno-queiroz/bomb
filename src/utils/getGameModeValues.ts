@@ -1,4 +1,4 @@
-import { gameModes } from "../pages/GameMode";
+import { gameModes } from "../modes/gameModes";
 
 export const getGameModeValues = (queryString: string) => {
   const searchParams = new URLSearchParams(queryString);
