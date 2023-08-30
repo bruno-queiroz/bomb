@@ -31,7 +31,7 @@ export const useBombStore = create<BombState>()((set) => ({
   incrementPlayerMoves: () =>
     set((state) => ({ playerMoves: state.playerMoves + 1 })),
   resetMatch: () => {
-    set((state) => ({
+    set(() => ({
       playerMoves: 0,
       isEndMatchModalOpen: false,
       deck: createDeck(
@@ -43,7 +43,7 @@ export const useBombStore = create<BombState>()((set) => ({
     }));
   },
   setIsEndMatchModalOpen: (boolean) =>
-    set((state) => ({ isEndMatchModalOpen: boolean })),
+    set(() => ({ isEndMatchModalOpen: boolean })),
   setDidPlayerWin: (boolean) => set((state) => ({ didPlayerWin: boolean })),
   winGolds: (amount) =>
     set((state) => {
@@ -58,5 +58,5 @@ export const useBombStore = create<BombState>()((set) => ({
       return { golds: currentGolds };
     }),
   setIsFloatGoldIconOnScreen: (boolean) =>
-    set((state) => ({ isFloatGoldIconOnScreen: boolean })),
+    set(() => ({ isFloatGoldIconOnScreen: boolean })),
 }));
