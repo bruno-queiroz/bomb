@@ -1,6 +1,9 @@
-import { gameModes } from "../modes/gameModes";
+import { gameModes as gameModesData } from "../modes/gameModes";
 
-export const getGameModeValues = (queryString: string) => {
+export const getGameModeValues = (
+  queryString: string,
+  gameModes = gameModesData
+) => {
   const searchParams = new URLSearchParams(queryString);
 
   const gameModeQuery = Number(searchParams.get("gm"));
@@ -8,6 +11,10 @@ export const getGameModeValues = (queryString: string) => {
   const gameModeSelected = gameModes?.find(
     (gameMode) => gameMode.mode === gameModeQuery
   );
+
+  if (!gameModeSelected) {
+    return gameModes[0];
+  }
 
   return gameModeSelected;
 };
