@@ -78,7 +78,7 @@ const EndMatchModal = () => {
 
   const carryGoldAnimationEnd = () => {
     setIsFloatGoldIconOnScreen(false);
-    incrementGoldOneByOne(getGameModeValues()?.win || 25);
+    incrementGoldOneByOne(getGameModeValues(window.location.search)?.win || 25);
   };
 
   return (
@@ -113,14 +113,14 @@ const EndMatchModal = () => {
               <div ref={earnedGoldRef}>
                 You Earned:{" "}
                 <span className="text-amber-500 font-semibold">
-                  {getGameModeValues()?.win} golds
+                  {getGameModeValues(window.location.search)?.win} golds
                 </span>
               </div>
             ) : (
               <div ref={earnedGoldRef}>
                 You Lost:{" "}
                 <span className="text-red-500 font-semibold">
-                  {getGameModeValues()?.loss} golds
+                  {getGameModeValues(window.location.search)?.loss} golds
                 </span>
               </div>
             )}

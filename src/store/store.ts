@@ -35,8 +35,8 @@ export const useBombStore = create<BombState>()((set) => ({
       playerMoves: 0,
       isEndMatchModalOpen: false,
       deck: createDeck(
-        getGameModeValues()?.mode || 12,
-        getGameModeValues()?.bombs || 3
+        getGameModeValues(window.location.search)?.mode || 12,
+        getGameModeValues(window.location.search)?.bombs || 3
       ),
       didPlayerWin: null,
       isFloatGoldIconOnScreen: true,

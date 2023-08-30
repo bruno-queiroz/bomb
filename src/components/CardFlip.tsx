@@ -57,7 +57,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     if (isCardRotated) return;
     if (didPlayerWin !== null) return;
 
-    const numberOfMoves = getGameModeValues()?.moves || 3;
+    const numberOfMoves = getGameModeValues(window.location.search)?.moves || 3;
     flipOneCard();
 
     if (deck[cardIndex].isBomb) {
@@ -70,7 +70,9 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
         () => setIsEndMatchModalOpen(true),
         deck.length * INTERVAL_BETWEEN_FLIP_A_CARD + INTERVAL_TO_SHOW_MODAL
       );
-      decrementGoldOneByOne(getGameModeValues()?.loss || 35);
+      decrementGoldOneByOne(
+        getGameModeValues(window.location.search)?.loss || 35
+      );
       return;
     }
 
