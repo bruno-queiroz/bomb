@@ -3,7 +3,7 @@ import { generateRandomNumber } from "../../src/utils/generateRandomNumber";
 describe("Testing generateRandomNumber utility function", () => {
   it("Should not return a value higher than the limit", () => {
     const limit1 = 12;
-    const limit2 = 6;
+    const limit2 = 1;
     const limit3 = 2;
 
     const randomNumber1 = generateRandomNumber(limit1);
