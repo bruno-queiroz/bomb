@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { Deck } from "../pages/Bomb";
 import { createDeck } from "../utils/createDeck";
 import { getGameModeValues } from "../utils/getGameModeValues";
+import { generateRandomNumbers } from "../utils/generateRandomNumbers";
 
 interface BombState {
   deck: Deck[];
@@ -31,16 +32,21 @@ export const useBombStore = create<BombState>()((set) => ({
   incrementPlayerMoves: () =>
     set((state) => ({ playerMoves: state.playerMoves + 1 })),
   resetMatch: () => {
-    set(() => ({
-      playerMoves: 0,
-      isEndMatchModalOpen: false,
-      deck: createDeck(
-        getGameModeValues(window.location.search)?.mode || 12,
-        getGameModeValues(window.location.search)?.bombs || 3
-      ),
-      didPlayerWin: null,
-      isFloatGoldIconOnScreen: true,
-    }));
+    set(() => {
+      const gameModeValues = getGameModeValues(window.location.search);
+      const randomNumbers = generateRandomNumbers(
+        gameModeValues.bombs,
+        gameModeValues.mode
+      );
+
+      return {
+        playerMoves: 0,
+        isEndMatchModalOpen: false,
+        deck: createDeck(randomNumbers, gameModeValues.mode),
+        didPlayerWin: null,
+        isFloatGoldIconOnScreen: true,
+      };
+    });
   },
   setIsEndMatchModalOpen: (boolean) =>
     set(() => ({ isEndMatchModalOpen: boolean })),
