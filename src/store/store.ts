@@ -3,6 +3,7 @@ import { Deck } from "../pages/Bomb";
 import { createDeck } from "../utils/createDeck";
 import { getGameModeValues } from "../utils/getGameModeValues";
 import { generateRandomNumbers } from "../utils/generateRandomNumbers";
+import { createCard } from "../utils/createCard";
 
 interface BombState {
   deck: Deck[];
@@ -42,7 +43,7 @@ export const useBombStore = create<BombState>()((set) => ({
       return {
         playerMoves: 0,
         isEndMatchModalOpen: false,
-        deck: createDeck(randomNumbers, gameModeValues.mode),
+        deck: createDeck(randomNumbers, gameModeValues.mode, createCard),
         didPlayerWin: null,
         isFloatGoldIconOnScreen: true,
       };
