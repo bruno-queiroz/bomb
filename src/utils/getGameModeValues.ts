@@ -1,4 +1,4 @@
-import { gameModes as gameModesData } from "../modes/gameModes";
+import { gameModes as gameModesData } from "../models/gameModes";
 
 export const getGameModeValues = (
   queryString: string,

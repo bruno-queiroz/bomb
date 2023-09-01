@@ -1,5 +1,5 @@
 import GameModeCard from "../components/GameModeCard";
-import { gameModes } from "../modes/gameModes";
+import { gameModes } from "../models/gameModes";
 
 const GameMode = () => {
   return (
