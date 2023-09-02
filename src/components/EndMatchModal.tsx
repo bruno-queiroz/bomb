@@ -28,7 +28,10 @@ const EndMatchModal = () => {
   const CARD_FLIP_ANIMATION_TIME = 300;
 
   const playAgain = () => {
-    setDeck(flipAllCardsDown());
+    const cardAmount = getGameModeValues(window.location.search).mode;
+
+    setDeck(flipAllCardsDown(cardAmount));
+
     setTimeout(() => {
       resetMatch();
     }, CARD_FLIP_ANIMATION_TIME);

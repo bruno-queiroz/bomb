@@ -3,6 +3,7 @@ import CardFlip from "../components/CardFlip";
 import { useBombStore } from "../store/store";
 import EndMatchModal from "../components/EndMatchModal";
 import { flipAllCardsDown } from "../utils/flipAllCardsDown";
+import { getGameModeValues } from "../utils/getGameModeValues";
 
 export interface Deck {
   isBomb: boolean;
@@ -20,8 +21,12 @@ const Bomb = () => {
   const CARD_FLIP_ANIMATION_TIME = 300;
 
   useEffect(() => {
+    const cardAmount = getGameModeValues(window.location.search).mode;
+
     setIsEndMatchModalOpen(false);
-    setDeck(flipAllCardsDown());
+
+    setDeck(flipAllCardsDown(cardAmount));
+
     setTimeout(() => {
       resetMatch();
     }, CARD_FLIP_ANIMATION_TIME);
