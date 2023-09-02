@@ -1,7 +1,4 @@
-import { getGameModeValues } from "./getGameModeValues";
-
-export const flipAllCardsDown = () => {
-  const cardAmount = getGameModeValues()?.mode || 12;
+export const flipAllCardsDown = (cardAmount: number) => {
   const deck = Array.from({ length: cardAmount }, (_, index) => ({
     isBomb: false,
     cardIndex: index,
