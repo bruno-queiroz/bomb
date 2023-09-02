@@ -82,7 +82,7 @@ const EndMatchModal = () => {
 
   const carryGoldAnimationEnd = () => {
     setIsFloatGoldIconOnScreen(false);
-    incrementGoldOneByOne(getGameModeValues(window.location.search)?.win || 25);
+    incrementGoldOneByOne(getGameModeValues(window.location.search)?.win);
   };
 
   return (
