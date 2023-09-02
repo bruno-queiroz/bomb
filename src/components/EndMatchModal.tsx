@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { flipAllCardsDown } from "../utils/flipAllCardsDown";
 import { getGameModeValues } from "../utils/getGameModeValues";
 import { GiGoldBar as GoldIcon } from "react-icons/gi";
+import { createCard } from "../utils/createCard";
 
 const EndMatchModal = () => {
   const isEndMatchModalOpen = useBombStore(
@@ -30,7 +31,7 @@ const EndMatchModal = () => {
   const playAgain = () => {
     const cardAmount = getGameModeValues(window.location.search).mode;
 
-    setDeck(flipAllCardsDown(cardAmount));
+    setDeck(flipAllCardsDown(cardAmount, createCard));
 
     setTimeout(() => {
       resetMatch();

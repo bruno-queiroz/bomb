@@ -4,6 +4,7 @@ import { useBombStore } from "../store/store";
 import EndMatchModal from "../components/EndMatchModal";
 import { flipAllCardsDown } from "../utils/flipAllCardsDown";
 import { getGameModeValues } from "../utils/getGameModeValues";
+import { createCard } from "../utils/createCard";
 
 export interface Deck {
   isBomb: boolean;
@@ -25,7 +26,7 @@ const Bomb = () => {
 
     setIsEndMatchModalOpen(false);
 
-    setDeck(flipAllCardsDown(cardAmount));
+    setDeck(flipAllCardsDown(cardAmount, createCard));
 
     setTimeout(() => {
       resetMatch();
