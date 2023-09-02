@@ -1,8 +1,11 @@
-export const flipAllCardsDown = (cardAmount: number) => {
-  const deck = Array.from({ length: cardAmount }, (_, index) => ({
-    isBomb: false,
-    cardIndex: index,
-    isCardRotated: false,
-  }));
+import { Card } from "../models/card";
+
+export const flipAllCardsDown = (
+  cardAmount: number,
+  createCard: (index: number) => Card
+) => {
+  const deck = Array.from({ length: cardAmount }, (_, index) =>
+    createCard(index)
+  );
   return deck;
 };
