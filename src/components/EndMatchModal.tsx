@@ -6,6 +6,7 @@ import { flipAllCardsDown } from "../utils/flipAllCardsDown";
 import { getGameModeValues } from "../utils/getGameModeValues";
 import { GiGoldBar as GoldIcon } from "react-icons/gi";
 import { createCard } from "../utils/createCard";
+import { calculateGoldXAndYLocation } from "../utils/calculateGoldXAndYLocation";
 
 const EndMatchModal = () => {
   const isEndMatchModalOpen = useBombStore(
@@ -22,9 +23,10 @@ const EndMatchModal = () => {
   );
   const resetMatch = useBombStore((state) => state.resetMatch);
   const setDeck = useBombStore((state) => state.setDeck);
+
   const earnedGoldRef = useRef<HTMLDivElement>(null);
-  const [floatGoldIconTopPosition, setFloatGoldIconTopPosition] = useState(0);
   const playAgainButtonRef = useRef<HTMLButtonElement>(null);
+  const [floatGoldIconTopPosition, setFloatGoldIconTopPosition] = useState(0);
 
   const CARD_FLIP_ANIMATION_TIME = 300;
 
@@ -40,32 +42,7 @@ const EndMatchModal = () => {
 
   useEffect(() => {
     if (didPlayerWin) {
-      const root: HTMLDivElement | null = document.querySelector(":root");
-      const goldCounter = document.querySelector("#gold-counter");
-      const goldCounterLocation = goldCounter?.getBoundingClientRect();
-      const earnedGoldLocation = earnedGoldRef.current?.getBoundingClientRect();
-
-      const earnedGoldTopLocation = earnedGoldLocation!.top;
-      const goldCounterLeftLocation = goldCounterLocation?.left;
-      const goldCounterTopLocation = goldCounterLocation?.top;
-      const middleOfTheBody = root?.getBoundingClientRect().width! / 2;
-
-      const middleOfGoldCounterHorizontally = goldCounterLocation?.width! / 2;
-
-      setFloatGoldIconTopPosition(earnedGoldTopLocation);
-
-      root!.style.setProperty(
-        "--y-location",
-        `-${earnedGoldTopLocation! - goldCounterTopLocation!}px`
-      );
-      root!.style.setProperty(
-        "--x-location",
-        `${
-          goldCounterLeftLocation! -
-          middleOfTheBody +
-          middleOfGoldCounterHorizontally
-        }px`
-      );
+      calculateGoldXAndYLocation(earnedGoldRef, setFloatGoldIconTopPosition);
     }
     if (isEndMatchModalOpen) {
       playAgainButtonRef.current?.focus();
