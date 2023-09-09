@@ -33,6 +33,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
           const updatedDeck = [...deck];
           updatedDeck[index].isCardRotated = true;
           updatedDeck[lastCardFlippedIndex].isCardRotated = true;
+
           setDeck(updatedDeck);
         }, index * INTERVAL_BETWEEN_FLIP_A_CARD);
       }
@@ -50,6 +51,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
   const flipOneCard = () => {
     const updatedDeck = [...deck];
     updatedDeck[cardIndex] = { ...updatedDeck[cardIndex], isCardRotated: true };
+
     setDeck(updatedDeck);
   };
 
@@ -99,6 +101,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
         className={`h-full w-full relative transition duration-300 transform-style rounded-lg ${
           isCardRotated && "rotate-y"
         }`}
+        data-testid="card-wrapper"
       >
         <div className="grid place-items-center absolute h-full w-full back-face rounded-lg bg-gray-950">
           <div className="flex items-center font-bold text-lg text-red-600">
@@ -112,11 +115,11 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
           }`}
         >
           {isBomb ? (
-            <div className="text-4xl text-white">
+            <div className="text-4xl text-white" data-testid="bomb">
               <BombIcon />
             </div>
           ) : (
-            <div className="text-4xl text-amber-400">
+            <div className="text-4xl text-amber-400" data-testid="gold">
               <GoldIcon />
             </div>
           )}

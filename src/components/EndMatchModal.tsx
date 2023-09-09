@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useBombStore } from "../store/store";
 import { Link } from "react-router-dom";
@@ -104,6 +104,7 @@ const EndMatchModal = () => {
         className={`flex justify-center fixed z-20 top-0 bottom-0 text-white left-0 right-0 bg-[rgba(0,0,0,0.5)] ${
           !isEndMatchModalOpen && "hidden"
         }`}
+        data-testid="end-modal"
       >
         <section className="flex flex-col gap-2 max-w-[600px] w-full absolute top-20 z-10 p-4 rounded bg-gray-800">
           <h2 className="text-white text-center text-4xl text-semibold mb-10">
