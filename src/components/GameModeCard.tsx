@@ -17,6 +17,7 @@ const GameModeCard = ({ bombs, golds, loss, moves, win, mode }: GameMode) => {
     <Link
       to={`/bomb?gm=${mode}`}
       className="flex flex-col justify-center gap-1 items-center text-lg font-semibold bg-sky-600 p-4 max-w-[400px] w-full rounded"
+      data-testid={`${mode}-card-mode`}
     >
       <div className="flex">
         {bombs} <BombIcon className="text-red-600 text-3xl ml-1 mr-3" /> {golds}{" "}
