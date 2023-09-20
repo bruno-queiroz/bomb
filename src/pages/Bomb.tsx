@@ -40,6 +40,7 @@ const Bomb = () => {
         className={`flex gap-4 flex-wrap justify-center ${
           deck.length > 12 ? "max-w-[600px]" : "max-w-[500px]"
         }`}
+        data-testid="cards-container"
       >
         {deck?.map((card, index) => (
           <CardFlip {...card} key={index} />

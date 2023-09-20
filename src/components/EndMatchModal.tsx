@@ -84,11 +84,21 @@ const EndMatchModal = () => {
         data-testid="end-modal"
       >
         <section className="flex flex-col gap-2 max-w-[600px] w-full absolute top-20 z-10 p-4 rounded bg-gray-800">
-          <h2 className="text-white text-center text-4xl text-semibold mb-10">
-            {didPlayerWin
-              ? "Congrats you were a lucky guy this time"
-              : "You caught the bomb this time"}
-          </h2>
+          {didPlayerWin ? (
+            <h2
+              className="text-white text-center text-4xl text-semibold mb-10"
+              data-testid="winner-title"
+            >
+              Congrats you were a lucky guy this time
+            </h2>
+          ) : (
+            <h2
+              className="text-white text-center text-4xl text-semibold mb-10"
+              data-testid="loser-title"
+            >
+              You caught the bomb this time
+            </h2>
+          )}
 
           <div className="flex justify-center mb-4 text-lg">
             {didPlayerWin ? (

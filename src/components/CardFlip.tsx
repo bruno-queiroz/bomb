@@ -96,6 +96,7 @@ const CardFlip = ({ isBomb, isCardRotated, cardIndex }: Deck) => {
     <button
       className="w-[120px] h-[120px] perspective rounded-lg"
       onClick={rotateCard}
+      data-testid={`${cardIndex}-card-index`}
     >
       <div
         className={`h-full w-full relative transition duration-300 transform-style rounded-lg ${
