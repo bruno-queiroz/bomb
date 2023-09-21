@@ -122,12 +122,14 @@ const EndMatchModal = () => {
             className="bg-green-600 py-3 rounded font-semibold text-lg"
             onClick={playAgain}
             ref={playAgainButtonRef}
+            data-testid="play-again"
           >
             Play again
           </button>
           <Link
             to="/game-mode"
             className="bg-gray-950 text-center py-3 rounded font-semibold"
+            data-testid="change-game-mode"
           >
             Change Game Mode
           </Link>
